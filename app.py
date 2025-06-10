@@ -117,8 +117,6 @@ def winning_conditions(bet,multiplier,roll,spin,num,balance):
             if bet>balance:
                 print("You lost all your money")
                 break
-            else:
-                pass
         else:
             print("You lost")
             break
