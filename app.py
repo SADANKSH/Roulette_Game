@@ -39,6 +39,25 @@ def update_balance(balance,bet,winnings):
     return balance
 
 
+# Function to withdraw the balance
+def withdraw(balance):
+    choice=input("Do you want to withdraw? (y/n): ")
+    if choice.lower()=="y":
+        while True:
+            amount=input("Enter the amount to withdraw: ")
+            if amount.isdigit():
+                amount=int(amount)
+                if amount<=balance:
+                    balance=balance-amount
+                    print(f"You withdrew ${amount}")
+                    break
+                else:
+                    print("Insufficient balance")
+    else:
+        print("You are not withdrawing")
+    return balance
+
+
 # Function to set the Multiplier based on the Player's choice of the betting range
 def bet_style():
     multiplier =1
@@ -87,6 +106,7 @@ def place_bet(balance):
 # Function to Roll the Dice randomly using the Random Module imported above
 def dice_roll():
     return random.randint(1,6)
+
 
 # Function to spin the Roulette using the Random Module.
 def roulette_spin():
@@ -140,6 +160,7 @@ def game():
         print(f"You won ${winnings}")
         balance=update_balance(balance,bet,winnings)
         print(f'Your balance is ${balance}')
+        balance=withdraw(balance)
         if balance==0:
             balance=deposit()
 
