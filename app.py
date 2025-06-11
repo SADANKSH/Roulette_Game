@@ -17,7 +17,7 @@ for i in range(1,101):
 # Function to take deposit from the Player
 def deposit():
     while True:
-        amount=(input("Enter the amount to deposit: "))
+        amount=(input("Enter the amount to deposit: $"))
         if amount.isdigit():
             amount=int(amount)
             if amount>0:
@@ -41,20 +41,21 @@ def update_balance(balance,bet,winnings):
 
 # Function to withdraw the balance
 def withdraw(balance):
-    choice=input("Do you want to withdraw? (y/n): ")
-    if choice.lower()=="y":
-        while True:
-            amount=input("Enter the amount to withdraw: ")
-            if amount.isdigit():
-                amount=int(amount)
-                if amount<=balance:
-                    balance=balance-amount
-                    print(f"You withdrew ${amount}")
-                    break
-                else:
-                    print("Insufficient balance")
-    else:
-        print("You are not withdrawing")
+    if balance != 0:
+        choice=input("Do you want to withdraw? (y/n): ")
+        if choice.lower()=="y":
+            while True:
+                amount=input("Enter the amount to withdraw: $")
+                if amount.isdigit():
+                    amount=int(amount)
+                    if amount<=balance:
+                        balance=balance-amount
+                        print(f"You withdrew ${amount}")
+                        break
+                    else:
+                        print("Insufficient balance")
+        else:
+            print("You are not withdrawing")
     return balance
 
 
@@ -76,7 +77,7 @@ def bet_style():
 # Function to set the num that player choosess to play bet on
 def get_number():
     while True:
-        num=input("Enter the number: ")
+        num=input("Enter the number: $")
         if num.isdigit():
             num=int(num)
             break
@@ -89,7 +90,7 @@ def get_number():
 # Function to take the Bet Amount from the Player and cross examine it with the current wallet balance.
 def place_bet(balance):
     while True:
-        bet=input("Enter your bet: ")
+        bet=input("Enter your bet: $")
         if bet.isdigit():
             bet=int(bet)
             if 0<bet<=balance:
