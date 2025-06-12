@@ -124,23 +124,25 @@ def winning_conditions(bet,multiplier,roll,spin,num,balance):
     winnings=0
     # If the dice roll is 1 or 6 the player has already lost. No need for the spin.
     while roll != 1 or roll != 6:
-        # If the dice spin is not 1 or 6 then if he has choosen low style betting the multiplier is 0.5x and the number in the  spin should be less than the number he chose.
-        if multiplier==1.5 and num>=spin:
-            winnings = bet*multiplier
-            break
-        # If he chose high style for the betting the multiplier is 1.5x and the number in the spin should be more than the number he chose.
-        elif multiplier==3 and num<=spin:
-            winnings = bet*multiplier
-            break
-        # If the Dice Roll is 1 or 6 and the spin is 0, this calls for a Double Bet fromt eh Dealer.If the player fails to meet he losses.
-        elif spin==0 and roll ==1 or spin==0 and roll ==6:
-            bet = bet*2
-            if bet>balance:
-                print("You lost all your money")
+        # Second we have to check if the category of number and spin number are same or not.If they are different the player  has already lost
+         if num in RED and spin in RED or num in BLACK and spin in BLACK:
+            # If the dice spin is not 1 or 6 then if he has choosen low style betting the multiplier is 0.5x and the number in the  spin should be less than the number he chose.
+            if multiplier==1.5 and num>=spin:
+                winnings = bet*multiplier
                 break
-        else:
-            print("You lost")
-            break
+            # If he chose high style for the betting the multiplier is 1.5x and the number in the spin should be more than the number he chose.
+            elif multiplier==3 and num<=spin:
+                winnings = bet*multiplier
+                break
+            # If the Dice Roll is 1 or 6 and the spin is 0, this calls for a Double Bet fromt eh Dealer.If the player fails to meet he losses.
+            elif spin==0 and roll ==1 or spin==0 and roll ==6:
+                bet = bet*2
+                if bet>balance:
+                    print("You lost all your money")
+                    break
+            else:
+                print("You lost")
+                break
     if roll ==1 or roll ==6:
         winnings = 0
         print("You lost")
