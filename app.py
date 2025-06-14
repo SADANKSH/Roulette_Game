@@ -1,4 +1,4 @@
-# Impoorting Random  Module to grnerate choices and numbers
+# Importing Random  Module to grnerate choices and numbers
 import random
 
 # Initializong Empty list to store numbers in two categories(Red and Black)
